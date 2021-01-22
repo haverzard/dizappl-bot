@@ -28,7 +28,7 @@ var (
 	addTaskMsg = "Task %s has been added."
 	deleteTaskMsg = "Task %s has been deleted."
 
-	db = connectToDB("dizappl.db")
+	db = connectToDB("/dizappl.db")
 )
 
 func connectToDB(name string) *gorm.DB {
@@ -114,8 +114,8 @@ func parse(data string) (args []string, err error) {
 func main() {
 	f, _ := os.Open("key.json")
 	data, _ := ioutil.ReadAll(f)
-	var creds map[string]interface{}
-	creds := json.Unmarshal(data, &creds)
+	var creds map[string]string
+	json.Unmarshal(data, &creds)
 	bot, err := linebot.New(creds["channel_secret"], creds["channel_token"])
 	check(err)
 
@@ -183,6 +183,23 @@ func main() {
 
 								sendMessage(bot, event.ReplyToken, fmt.Sprintf(createChannelMsg, args[0]))
 							} else if msgLength > 7 && strings.EqualFold(message.Text[:7], "!tasks ") {
+								var args []string
+
+								args, err = parse(message.Text[7:])
+								if err != nil || (len(args) != 1 && len(args) != 2) {
+									sendMessage(bot, event.ReplyToken, fmt.Sprintf(commandFailedMsg, "tasks"))
+									break
+								}
+
+								var offset int
+								if len(args) == 2 {
+									offset, err = strconv.Atoi(args[1])
+									if err != nil {
+										sendMessage(bot, event.ReplyToken, fmt.Sprintf(commandFailedMsg, "tasks"))
+										break
+									}
+								}
+
 								var user User
 								db.Find(&user, "id = ?", userID)
 								if user.ID == "" || user.ChannelUser == "" {
@@ -193,7 +210,7 @@ func main() {
 								location, _ := time.LoadLocation("Asia/Jakarta")
 								var tasks []Task
 								var query string
-								switch message.Text[7:] {
+								switch args[0] {
 									case "now":
 										query = "channel_task = ? AND date >= ?"
 									case "past":
@@ -202,8 +219,14 @@ func main() {
 										sendMessage(bot, event.ReplyToken, fmt.Sprintf(commandFailedMsg, "tasks"))
 										break
 								}
-								// var counts int64
-								db.Order("date").Limit(9).Find(&tasks, query, user.ChannelUser, now)
+								var counts int64
+								now := time.Now().In(location)
+								db.Model(&Task{}).Where(query, user.ChannelUser, now).Count(&counts)
+								if counts < int64(offset*9) {
+									sendMessage(bot, event.ReplyToken, fmt.Sprintf("Page %d is not available", offset))
+									break
+								}
+								db.Order("date").Limit(9).Offset(offset*9).Find(&tasks, query, user.ChannelUser, now)
 
 								msg := "Swipe to the left >>"
 								if len(tasks) == 0 {
@@ -223,6 +246,12 @@ func main() {
 													Weight: "bold",
 													Size: "sm",
 													Wrap: true,
+												},
+												&linebot.TextComponent{
+													Type: linebot.FlexComponentTypeText,
+													Text: fmt.Sprintf("Page %d of %d", offset, uint(counts/9)),
+													Wrap: true,
+													Size: "xs",
 												},
 												&linebot.TextComponent{
 													Type: linebot.FlexComponentTypeText,
