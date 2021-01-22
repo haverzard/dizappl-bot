@@ -1,0 +1,266 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Dizappl",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "text",
+        "text": "Commands List"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!help",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!connect <channel> <key>",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!create channel <channel> <key>",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!tasks now",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!tasks past",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!add task <task> <datetime> <description>",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "!delete task <task-id>",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Format Data",
+        "margin": "20px"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "datetime: 'YYYY-MM-DD HH:MM:SS'",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "channel: 'text here'",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "icon",
+                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
+              },
+              {
+                "type": "text",
+                "text": "task: 'text here'",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Created by ",
+            "align": "center",
+            "offsetStart": "8%",
+            "size": "15px"
+          },
+          {
+            "type": "text",
+            "text": "haverzard",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://github.com/haverzard"
+            },
+            "color": "#00AADD",
+            "size": "15px"
+          }
+        ]
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
