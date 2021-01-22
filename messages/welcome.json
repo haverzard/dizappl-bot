@@ -88,26 +88,7 @@
               },
               {
                 "type": "text",
-                "text": "!tasks now",
-                "wrap": true,
-                "color": "#666666",
-                "size": "sm",
-                "flex": 5
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "baseline",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "icon",
-                "url": "https://cdn0.iconfinder.com/data/icons/feather/96/591276-arrow-right-512.png"
-              },
-              {
-                "type": "text",
-                "text": "!tasks past",
+                "text": "!tasks <'now'|'past'> <page_num|0>",
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",

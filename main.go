@@ -199,14 +199,11 @@ func main() {
 									case "past":
 										query = "channel_task = ? AND date < ?"
 									default:
-										sendMessage(bot, event.ReplyToken, fmt.Sprintf(commandFailedMsg, "create channel"))
+										sendMessage(bot, event.ReplyToken, fmt.Sprintf(commandFailedMsg, "tasks"))
 										break
 								}
-								var counts int64
-								now := time.Now().In(location)
-								db.Model(&Task{}).Where(query, user.ChannelUser, now).Count(&counts)
-								if counts 
-								db.Order("date").Limit(9).Offset.Find(&tasks, query, user.ChannelUser, now)
+								// var counts int64
+								db.Order("date").Limit(9).Find(&tasks, query, user.ChannelUser, now)
 
 								msg := "Swipe to the left >>"
 								if len(tasks) == 0 {
